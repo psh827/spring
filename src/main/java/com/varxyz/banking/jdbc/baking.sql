@@ -1,0 +1,6 @@
+SELECT * FROM Customer;
+
+DELETE FROM Customer WHERE cid=1003;
+SHOW TABLES;
+
+SELECT * FROM Account;
