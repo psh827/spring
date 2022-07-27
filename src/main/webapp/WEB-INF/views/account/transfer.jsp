@@ -34,9 +34,10 @@
 			        </select>
 				</div>
 				
-				<div class="col-sm-3">
+				<div class="col-sm-3 relative-position">
 		     	   <label for="state">금액</label>
 		    	    <input type="text" name="sendMoney" />
+		    	    <span class="won">원</span>
 		        <div class="invalid-feedback">
 		          Please provide a valid state.
 		        </div>

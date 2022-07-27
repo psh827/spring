@@ -38,6 +38,7 @@
         <div class="form-group">
           <input type="text" name="depositMoney" class="form-control" required>
           <span>금액</span>
+          <span class="won">원</span>
           <span class="border"></span>
         </div>
         <button type="submit">입금</button>

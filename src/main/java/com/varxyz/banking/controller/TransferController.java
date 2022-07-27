@@ -41,8 +41,17 @@ public class TransferController {
 	@PostMapping("/account/transfer")
 	public String transfer(HttpServletRequest request, HttpSession session) {
 		String withdrawAccountNum = request.getParameter("withdrawAccountNum");
-		double sendMoney = Double.parseDouble(request.getParameter("sendMoney"));
+		String sendMoneyStr = request.getParameter("sendMoney");
+		if(sendMoneyStr.matches(".*[a-zA-Z].*") || sendMoneyStr.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
+			request.setAttribute("msg", "금액 입력이 잘못되었습니다. 숫자만 가능합니다.");
+			request.setAttribute("url", "deposit");
+			return "alert";
+		}
+		
+		double sendMoney = Double.parseDouble(sendMoneyStr);
 		String depositAccountNum = request.getParameter("depositAccountNum");
+		
+		
 		Customer customer = customerService.getCustomerByAccountNum(depositAccountNum);
 		if(customer == null) {
 			request.setAttribute("msg", "계좌번호를 잘못 입력하셨습니다. 확인해 주세요");
@@ -78,9 +87,11 @@ public class TransferController {
 			return "alert";
 		}
 		if(!checkPasswd.equals(passwd)) {
+			String referer = request.getHeader("Referer");
+			String path = "redirect:transferAlertBefore";
 			request.setAttribute("msg", "비밀번호가 틀렸습니다.");
-			request.setAttribute("url", "transfer");
-			return "alert";
+			request.setAttribute("url", path);
+		    return "alert";
 		}
 		
 		accountService.transfer(sendMoney, withdrawAccountNum, depositAccountNum);
@@ -94,38 +105,6 @@ public class TransferController {
 		return "alert";
 	}
 	
-//	@GetMapping("/account/transfer_success")
-//	public String transferSuccessComeBack(HttpSession session, HttpServletRequest request) {
-//		String withdrawAccountNum = (String)session.getAttribute("withdrawAccountNum");
-//		double sendMoney = (double)session.getAttribute("sendMoney");
-//		String depositAccountNum = (String)session.getAttribute("depositAccountNum");
-//		double withdrawBalance = accountService.getBalance(withdrawAccountNum);
-//		String checkPasswd = (String)session.getAttribute("passwd");
-//		String passwd = request.getParameter("passwd");
-//		System.out.println(checkPasswd);
-//		System.out.println(passwd);
-//		
-//		if(withdrawBalance - sendMoney < 0) {
-//			request.setAttribute("msg", "잔액이 부족합니다.");
-//			request.setAttribute("url", "transfer");
-//			return "alert";
-//		}
-//		if(!checkPasswd.equals(passwd)) {
-//			request.setAttribute("msg", "비밀번호가 틀렸습니다.");
-//			request.setAttribute("url", "transfer_success");
-//			return "alert";
-//		}
-//		
-//		accountService.transfer(sendMoney, withdrawAccountNum, depositAccountNum);
-//		request.setAttribute("msg", "송금이 완료되었습니다.");
-//		request.setAttribute("url", "/banking/main");
-//		session.removeAttribute("withdrawAccountNum");
-//		session.removeAttribute("receiveName");
-//		session.removeAttribute("depositAccountNum");
-//		session.removeAttribute("passwd");
-//		session.removeAttribute("sendMoney");
-//		return "alert";
-//	}
 
 	
 }

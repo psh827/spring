@@ -35,14 +35,21 @@ public class DepositController {
 	@PostMapping("/account/deposit")
 	public String deposit(HttpSession session, HttpServletRequest request) {
 		String accountNum = request.getParameter("accountNum");
-		double depositMoney = Double.parseDouble(request.getParameter("depositMoney"));
+		String depositMoneyStr = request.getParameter("depositMoney");
+		if(depositMoneyStr.matches(".*[a-zA-Z].*") || depositMoneyStr.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
+			request.setAttribute("msg", "금액 입력이 잘못되었습니다. 숫자만 가능합니다.");
+			request.setAttribute("url", "deposit");
+			return "alert";
+		}
+		double depositMoney = Double.parseDouble(depositMoneyStr);
 		
 		if(depositMoney < 0.0) {
 			request.setAttribute("msg", "잘못된 입력입니다.");
 			request.setAttribute("url", "deposit");
 			return "alert";
 		}
-		
+
+
 		accountService.deposit(depositMoney, accountNum);
 		request.setAttribute("accountNum", accountNum);
 		request.setAttribute("depositMoney", depositMoney);

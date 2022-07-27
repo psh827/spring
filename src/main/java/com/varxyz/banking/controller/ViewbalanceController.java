@@ -37,11 +37,11 @@ public class ViewbalanceController {
 		String accountNum = request.getParameter("accountNum");
 		double balance = accountService.getBalance(accountNum);
 		
+		
 		request.setAttribute("accountNum", accountNum);
 		request.setAttribute("balance", balance);
 		
 		return "account/view_balance_info";
-		
-		
 	}
+	
 }

@@ -40,6 +40,20 @@ a {
   color: #73685d;
 }
   
+    button {
+      margin-top: 100px;
+	    width: 150px;
+	    border: 1px;
+	    border-radius: 10px;
+	    padding: 10px;
+	    background: grey;
+	    color: #fff;
+  }
+ 
+ h2{
+ 		margin-top: 100px;
+ }
+  
  @media all and (max-width: 768px) {
     
   table, thead, tbody, th, td, tr {
@@ -81,18 +95,5 @@ a {
   td {
     border-bottom: 1px solid #e5e5e5;
   }
-  
-  button {
-      margin-top: 100px;
-	    width: 150px;
-	    border: 1px;
-	    border-radius: 10px;
-	    padding: 10px;
-	    background: grey;
-	    color: #fff;
-  }
- 
- 	h2{
- 		margin-top: 100px;
- 	} 
+   
  }

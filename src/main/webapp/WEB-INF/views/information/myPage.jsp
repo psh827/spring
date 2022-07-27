@@ -33,7 +33,7 @@
       box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.15)
     }
     .btn {
-  	 background: linear-gradient(90deg, rgba(255,113,31,1) 0%, rgba(255,202,155,1) 100%);
+  	 background: linear-gradient(90deg, #39459B 0%, #39459B 100%);
      color: white;
      width: 300px;
      position: relative;
@@ -51,7 +51,7 @@
         <h4 class="mb-31">My page</h4>
         <form class="validation-form" action="myPage" method="post">
           <div class="row">
-             <div class="col-md-6 mb-3">
+             <div class="col-md-6 mb-3 text_center">
               <label for="passwd">비밀번호</label>
               <input type="password" class="form-control" id="passwd" placeholder="비밀번호" name="passwd" required>
               <div class="invalid-feedback">

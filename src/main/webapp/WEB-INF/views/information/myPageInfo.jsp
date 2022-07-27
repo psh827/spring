@@ -45,39 +45,42 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <jsp:include page="../incl/header.jsp"/>
         </nav>
-        <div class="table-title">
-	<h3 style="color:black;">내 정보</h3>
-	</div>
-	<table class="table-fill">
-		<thead>
+    <div class="table-container">
+	    <div class="table-title">
+			<h3 style="color:black;">내 정보</h3>
+		</div>
+		<table class="table-fill">
+			<thead>
+			<tr>
+			<th class="text-left"></th>
+			<th class="text-left"></th>
+			</tr>
+		</thead>
+		<tbody class="table-hover">
 		<tr>
-		<th class="text-left">Month</th>
-		<th class="text-left">Sales</th>
+			<td class="text-left">이름</td>
+			<td class="text-left">${customer.name}</td>
 		</tr>
-	</thead>
-	<tbody class="table-hover">
-	<tr>
-		<td class="text-left">이름</td>
-		<td class="text-left">${customer.name}</td>
-	</tr>
-	<tr>
-		<td class="text-left">아이디</td>
-		<td class="text-left">${customer.email }</td>
-	</tr>
-	<tr>
-		<td class="text-left">전화번호</td>
-		<td class="text-left">${customer.phone}</td>
-	</tr>
-	<tr>
-		<td class="text-left">보유계좌 수</td>
-		<td class="text-left">${accountNum}개 <a class="nav-link" href="<c:url value='/account/view_my_accounts'/>">계좌 보러가기</a></td>
-	</tr>
-	<tr>
-		<td class="text-left">가입일</td>
-		<td class="text-left">${customer.regDate}</td>
-	</tr>
-	</tbody>
-	</table>
+		<tr>
+			<td class="text-left">아이디</td>
+			<td class="text-left">${customer.email }</td>
+		</tr>
+		<tr>
+			<td class="text-left">전화번호</td>
+			<td class="text-left">${customer.phone}</td>
+		</tr>
+		<tr>
+			<td class="text-left">보유계좌 수</td>
+			<td class="text-left" style="display:flex; align-items: center;">${accountNum}개 <a class="nav-link" href="<c:url value='/account/view_my_accounts'/>">계좌 보러가기</a></td>
+		</tr>
+		<tr>
+			<td class="text-left">가입일</td>
+			<td class="text-left">${customer.regDate}</td>
+		</tr>
+		</tbody>
+		</table>
+    <button class="submit-btn" type="button" onclick='location.href="<c:url value='/main'/>"'>메인으로</button>
+    </div>
 
    
     <footer class="my-3 text-center text-small">

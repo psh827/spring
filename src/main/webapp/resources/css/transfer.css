@@ -77,6 +77,14 @@ input {
   background-color: #fff;
 }
 
+.relative-position {
+	position: relative;
+}
+.won{
+	position: absolute;
+	right: 10px;
+	bottom: 6px
+}
 .carousel .slide {
   height: 20%;
 }

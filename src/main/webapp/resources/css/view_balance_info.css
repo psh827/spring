@@ -6,15 +6,12 @@
     body {
       margin: 0;
       padding: 0;
-
-      color: #ffffff;
       font-size: 15px;
     }
 
     input,
     textarea,
     button {
-      color: #ffffff;
       font-size: 15px;
     }
 
@@ -64,12 +61,42 @@
 
     .form-group {
       position: relative;
-
+	  text-align: center;
       display: block;
 
       margin-bottom: 48px;
     }
-
+    
+    .box {
+    	width: 500px;
+    	height: 500px;
+    	border: 3px solid #39459b;
+    	border-radius: 10px;
+    	margin: 100px auto 50px;
+    }
+    
+    .box-content {
+    	display: flex;
+    	height: 100%;
+    	flex-direction: column;
+    	justify-content: space-around;
+    	align-content: center;
+    }
+	.box-content-text {
+		font-size: 18px;
+		margin-top: 50px;
+	}
+	.submit-btn {
+		width: 150px;
+		height: 50px;
+		background: #39459b;
+		margin: 0 auto;
+	}
+	
+	.btn-box {
+		display: flex;
+	}
+	
     .form-group span {
       position: absolute;
       top: 11px;
@@ -80,10 +107,6 @@
       transition: all 0.2s ease;
       transform-origin: 0 0;
     }
-    
-    .won {
-		right: 10px;
-	}
 
     .form-group span.border {
       position: absolute;
@@ -126,6 +149,11 @@
       transform: scaleX(1);
     }
 
+	select{
+		width: 150px;
+    	height: 50px;
+    }
+	
     textarea.form-control {
       padding: 13px 1px;
     }
@@ -141,7 +169,6 @@
       margin: 60px auto 0;
       padding: 0;
 
-      color: #ffffff;
       border: 2px solid #ffffff;
       border-radius: 4px;
       background-color: #39459b;

@@ -27,11 +27,11 @@
 	<table>
     <thead>
     <tr>
-        <th>No</th>
-        <th>계좌 번호</th>
-        <th>계좌 유형</th>
-        <th>잔고</th>
-        <th>개설일</th>
+        <th style="width:5%;">No</th>
+        <th style="width:20%;">계좌 번호</th>
+        <th style="width:20%;">계좌 유형</th>
+        <th style="width:20%;">잔고</th>
+        <th style="width:20%;">개설일</th>
     </tr>
     </thead>
     <tbody>

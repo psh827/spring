@@ -22,12 +22,11 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <jsp:include page="../incl/header.jsp"/>
         </nav>
-	<form action="add_customer" method="POST" class="joinForm">
+	<form action="add_customer" method="post" class="joinForm">
                                                                                                
       <h2>회원가입</h2>
       <div class="textForm">
-        <input name="userId" type="text" class="id" placeholder="아이디">
-        </input>
+        <input name="email" type="text" class="email" placeholder="아이디" />
       </div>
       <div class="textForm">
         <input name="passwd" type="password" class="pw" placeholder="비밀번호">

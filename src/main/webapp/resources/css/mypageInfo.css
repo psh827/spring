@@ -1,10 +1,15 @@
 @charset "UTF-8";
 div.table-title {
    display: block;
-  margin: auto;
+  margin: 50px auto 50px;
   max-width: 600px;
   padding:5px;
   width: 100%;
+}
+
+.table-container {
+	height: calc(100% - 56px);
+	text-align: center;
 }
 
 .table-title h3 {
@@ -131,4 +136,15 @@ td.text-center {
 
 td.text-right {
   text-align: right;
+}
+
+.submit-btn{
+	width: 150px;
+	height: 50px;
+	background: #39459b;
+	margin: 0 auto;
+	margin-top: 30px;
+	border: none;
+	border-radius: 15px;
+	color: #fff;
 }

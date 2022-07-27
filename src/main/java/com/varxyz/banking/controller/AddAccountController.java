@@ -25,7 +25,13 @@ public class AddAccountController {
 	CustomerServiceImpl customerService;
 	
 	@GetMapping("/account/add_account")
-	public String addAccountForm() {
+	public String addAccountForm(HttpSession session,  HttpServletRequest request) {
+		String userId = (String)session.getAttribute("userId");
+		if(userId == null) {
+			request.setAttribute("msg", "로그인이 필요합니다.");
+			request.setAttribute("url", "http://localhost:8080/banking/login_add/login");
+			return "alert";
+		}
 		return "account/add_account";
 	}
 	
@@ -33,8 +39,15 @@ public class AddAccountController {
 	public String addAccount(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
-		char accType = request.getParameter("accType").charAt(0);
+		String accTypeString = request.getParameter("accType"); 
+		char accType = accTypeString.charAt(0);
 		Account account = null;
+		
+		if(accType != 'S' || accType != 'C' || accTypeString.length() >= 2) {
+			request.setAttribute("msg", "잘못된 입력입니다. S, C 만 입력가능합니다.");
+			request.setAttribute("url", "add_account");
+			return "alert";
+		}
 		
 		if(accType == 'S') {
 			account = new SavingAccount();
