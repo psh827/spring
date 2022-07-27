@@ -61,6 +61,7 @@ public class AccountDao {
 		String sql2 = "UPDATE Account SET balance = balance + ? WHERE accountNum=?";
 		jdbcTemplate.update(sql, money, withdrawAccountNum);
 		jdbcTemplate.update(sql2, money, depositAccountNum);
+		System.out.println("송금완료");
 	}
 	
 	public void saveInterest(String accountNum, double interestRate) {
@@ -74,6 +75,11 @@ public class AccountDao {
 				+ " a.customerId = c.cid WHERE a.accountNum=?";
 		
 		return jdbcTemplate.queryForObject(sql, Long.class, accountNum);
+	}
+	
+	public void deposit(double depositMoney, String accountNum) {
+		String sql = "UPDATE Account SET balance = balance + ? WHERE accountNum=?";
+		jdbcTemplate.update(sql, depositMoney, accountNum);
 	}
 	
 }

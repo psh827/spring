@@ -1,6 +1,5 @@
 package com.varxyz.banking.controller;
 
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,12 +14,13 @@ import com.varxyz.banking.domain.Account;
 import com.varxyz.banking.service.AccountServiceImpl;
 
 @Controller
-public class ViewMyAccountController {
+public class ViewbalanceController {
+	
 	@Autowired
 	private AccountServiceImpl accountService;
 	
-	@GetMapping("/account/view_my_accounts")
-	public String viewMyAccountForm(HttpSession session, HttpServletRequest request) {
+	@GetMapping("/account/view_balance")
+	public String viewBalanceForm(HttpSession session,  HttpServletRequest request) {
 		String userId = (String)session.getAttribute("userId");
 		if(userId == null) {
 			request.setAttribute("msg", "로그인이 필요합니다.");
@@ -29,6 +29,19 @@ public class ViewMyAccountController {
 		}
 		List<Account> accountList = accountService.getAccounts(userId);
 		request.setAttribute("accountList", accountList);
-		return "account/view_my_accounts";
+		return "account/view_balance";
+	}
+	
+	@PostMapping("/account/view_balance")
+	public String viewBalance(HttpSession session, HttpServletRequest request) {
+		String accountNum = request.getParameter("accountNum");
+		double balance = accountService.getBalance(accountNum);
+		
+		request.setAttribute("accountNum", accountNum);
+		request.setAttribute("balance", balance);
+		
+		return "account/view_balance_info";
+		
+		
 	}
 }

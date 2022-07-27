@@ -1,6 +1,5 @@
 package com.varxyz.banking.controller;
 
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,12 +14,13 @@ import com.varxyz.banking.domain.Account;
 import com.varxyz.banking.service.AccountServiceImpl;
 
 @Controller
-public class ViewMyAccountController {
+public class DepositController {
+
 	@Autowired
 	private AccountServiceImpl accountService;
 	
-	@GetMapping("/account/view_my_accounts")
-	public String viewMyAccountForm(HttpSession session, HttpServletRequest request) {
+	@GetMapping("/account/deposit")
+	public String depositForm(HttpSession session, HttpServletRequest request) {
 		String userId = (String)session.getAttribute("userId");
 		if(userId == null) {
 			request.setAttribute("msg", "로그인이 필요합니다.");
@@ -29,6 +29,24 @@ public class ViewMyAccountController {
 		}
 		List<Account> accountList = accountService.getAccounts(userId);
 		request.setAttribute("accountList", accountList);
-		return "account/view_my_accounts";
+		return "account/deposit";
+	}
+	
+	@PostMapping("/account/deposit")
+	public String deposit(HttpSession session, HttpServletRequest request) {
+		String accountNum = request.getParameter("accountNum");
+		double depositMoney = Double.parseDouble(request.getParameter("depositMoney"));
+		
+		if(depositMoney < 0.0) {
+			request.setAttribute("msg", "잘못된 입력입니다.");
+			request.setAttribute("url", "deposit");
+			return "alert";
+		}
+		
+		accountService.deposit(depositMoney, accountNum);
+		request.setAttribute("accountNum", accountNum);
+		request.setAttribute("depositMoney", depositMoney);
+		return "account/deposit_success";
+		
 	}
 }

@@ -8,10 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-${name}님 계좌타입을 선택해 주세요.
-<form action="add_account" method="post">
-	<input type="text" name="accType"/>
-	<input type="submit" value="신청"/>
-</form>
+	<h3>${name}님의 ${accountNum} 계좌의 잔고는 ${balance}원입니다.</h3>
+	<button type="button" onclick='location.href="<c:url value='/main'/>"'>메인으로</button>
 </body>
 </html>

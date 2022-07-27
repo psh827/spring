@@ -16,7 +16,7 @@ public class Customer {
 	private String name;
 	private String ssn;
 	private String phone;
-	private Date reDate;
+	private Date regDate;
 	
 	public Customer() {
 	}

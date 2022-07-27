@@ -37,6 +37,10 @@ public class AccountServiceImpl implements AccountService{
 	public void saveInterest(String accountNum, double interestRate) {
 		accountDao.saveInterest(accountNum, interestRate);
 	}
+	
+	public void deposit(double depositMoney, String accountNum) {
+		accountDao.deposit(depositMoney, accountNum);
+	}
 
 	
 }

@@ -24,12 +24,12 @@ public class AddAccountController {
 	@Autowired
 	CustomerServiceImpl customerService;
 	
-	@GetMapping("account/add_account")
+	@GetMapping("/account/add_account")
 	public String addAccountForm() {
-		return "/account/add_account";
+		return "account/add_account";
 	}
 	
-	@PostMapping("account/add_account")
+	@PostMapping("/account/add_account")
 	public String addAccount(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");

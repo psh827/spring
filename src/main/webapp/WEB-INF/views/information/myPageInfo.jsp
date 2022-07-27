@@ -8,7 +8,7 @@
 <title>my page</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
 <link href="<c:url value='/resources/css/style.css'/>" rel="stylesheet" />
-<link href="<c:url value='/resources/css/mypage.css'/>" rel="stylesheet" />
+<link href="<c:url value='/resources/css/mypageInfo.css'/>" rel="stylesheet" />
 <style>
   	.mb-31 {
 	  text-align: center;
@@ -44,26 +44,42 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <jsp:include page="../incl/header.jsp"/>
-        </nav>>
+        </nav>
+        <div class="table-title">
+	<h3 style="color:black;">내 정보</h3>
+	</div>
+	<table class="table-fill">
+		<thead>
+		<tr>
+		<th class="text-left">Month</th>
+		<th class="text-left">Sales</th>
+		</tr>
+	</thead>
+	<tbody class="table-hover">
+	<tr>
+		<td class="text-left">이름</td>
+		<td class="text-left">${customer.name}</td>
+	</tr>
+	<tr>
+		<td class="text-left">아이디</td>
+		<td class="text-left">${customer.email }</td>
+	</tr>
+	<tr>
+		<td class="text-left">전화번호</td>
+		<td class="text-left">${customer.phone}</td>
+	</tr>
+	<tr>
+		<td class="text-left">보유계좌 수</td>
+		<td class="text-left">${accountNum}개 <a class="nav-link" href="<c:url value='/account/view_my_accounts'/>">계좌 보러가기</a></td>
+	</tr>
+	<tr>
+		<td class="text-left">가입일</td>
+		<td class="text-left">${customer.regDate}</td>
+	</tr>
+	</tbody>
+	</table>
 
-    <div class="input-form-backgroud row">
-      <div class="input-form col-md-12 mx-auto">
-        <h4 class="mb-31">My page</h4>
-        <form class="validation-form" action="myPage" method="post">
-          <div class="row">
-             <div class="col-md-6 mb-3">
-              <label for="passwd">비밀번호</label>
-              <input type="password" class="form-control" id="passwd" placeholder="비밀번호" name="passwd" required>
-              <div class="invalid-feedback">
-                비밀번호를 입력해주세요.
-              </div>
-            </div>
-           
-          </div>
-            <button class="btn" type="submit">조회하기</button>
-        </form>
-      </div>
-    </div>
+   
     <footer class="my-3 text-center text-small">
       <p class="mb-1">&copy; 2022 YM</p>
     </footer>
