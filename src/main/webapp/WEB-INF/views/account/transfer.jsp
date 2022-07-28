@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Heroic Features - Start Bootstrap Template</title>
+        <title>송금</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -15,6 +15,7 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="<c:url value='/resources/css/style.css'/>" rel="stylesheet" />
         <link href="<c:url value='/resources/css/transfer.css'/>" rel="stylesheet" />
+        <script type="text/javascript"	src="<c:url value='/resources/js/common.js'/>"></script>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -36,7 +37,7 @@
 				
 				<div class="col-sm-3 relative-position">
 		     	   <label for="state">금액</label>
-		    	    <input type="text" name="sendMoney" />
+		    	    <input type="text" onkeyup="inputNumberFormat(this)" name="sendMoney" required="required" />
 		    	    <span class="won">원</span>
 		        <div class="invalid-feedback">
 		          Please provide a valid state.

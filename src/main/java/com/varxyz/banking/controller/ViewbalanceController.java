@@ -35,7 +35,7 @@ public class ViewbalanceController {
 	@PostMapping("/account/view_balance")
 	public String viewBalance(HttpSession session, HttpServletRequest request) {
 		String accountNum = request.getParameter("accountNum");
-		double balance = accountService.getBalance(accountNum);
+		int balance = (int) accountService.getBalance(accountNum);
 		
 		
 		request.setAttribute("accountNum", accountNum);

@@ -48,7 +48,6 @@ public class TransferController {
 			return "alert";
 		}
 		
-		double sendMoney = Double.parseDouble(sendMoneyStr);
 		String depositAccountNum = request.getParameter("depositAccountNum");
 		
 		
@@ -66,7 +65,7 @@ public class TransferController {
 		session.setAttribute("receiveName", customer.getName());
 		session.setAttribute("depositAccountNum", depositAccountNum);
 		session.setAttribute("passwd", myCustomer.getPasswd());
-		session.setAttribute("sendMoney", sendMoney);
+		session.setAttribute("sendMoney", sendMoneyStr);
 		
 		return "account/transferAlertBefore";
 	}
@@ -74,38 +73,60 @@ public class TransferController {
 	
 	@PostMapping("/account/transfer_success")
 	public String transferSuccess(HttpSession session, HttpServletRequest request) {
+		
 		String withdrawAccountNum = (String)session.getAttribute("withdrawAccountNum");
-		double sendMoney = (double)session.getAttribute("sendMoney");
+		String sendMoneyStr = (String)session.getAttribute("sendMoney");
 		String depositAccountNum = (String)session.getAttribute("depositAccountNum");
 		double withdrawBalance = accountService.getBalance(withdrawAccountNum);
 		String checkPasswd = (String)session.getAttribute("passwd");
 		String passwd = request.getParameter("passwd");
 		
+		
+		request.setAttribute("sendMoney", sendMoneyStr);
+		double sendMoney = Double.parseDouble(sendMoneyStr.replace(",", ""));
+				
 		if(withdrawBalance - sendMoney < 0) {
 			request.setAttribute("msg", "잔액이 부족합니다.");
 			request.setAttribute("url", "transfer");
+			
+			session.removeAttribute("withdrawAccountNum");
+			session.removeAttribute("receiveName");
+			session.removeAttribute("depositAccountNum");
+			session.removeAttribute("passwd");
+			session.removeAttribute("sendMoney");
+			
 			return "alert";
 		}
 		if(!checkPasswd.equals(passwd)) {
-			String referer = request.getHeader("Referer");
-			String path = "redirect:transferAlertBefore";
 			request.setAttribute("msg", "비밀번호가 틀렸습니다.");
-			request.setAttribute("url", path);
+			request.setAttribute("url", "transfer");
+			
+			session.removeAttribute("withdrawAccountNum");
+			session.removeAttribute("receiveName");
+			session.removeAttribute("depositAccountNum");
+			session.removeAttribute("passwd");
+			session.removeAttribute("sendMoney");
+			
 		    return "alert";
 		}
 		
 		accountService.transfer(sendMoney, withdrawAccountNum, depositAccountNum);
+		
+		double afterTransfer = accountService.getBalance(withdrawAccountNum);
+		
 		request.setAttribute("msg", "송금이 완료되었습니다.");
 		request.setAttribute("url", "/banking/main");
+		request.setAttribute("afterTransferMoney", afterTransfer);
+		request.setAttribute("receiveName", session.getAttribute("receiveName"));
+		
 		session.removeAttribute("withdrawAccountNum");
 		session.removeAttribute("receiveName");
 		session.removeAttribute("depositAccountNum");
 		session.removeAttribute("passwd");
 		session.removeAttribute("sendMoney");
-		return "alert";
+		
+		return "account/transfer_success";
 	}
-	
-
 	
 }
 

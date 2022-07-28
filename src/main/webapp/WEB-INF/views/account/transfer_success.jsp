@@ -7,15 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>입금</title>
+        <title>송금성공</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="<c:url value='/resources/css/style.css'/>" rel="stylesheet" />
-        <link href="<c:url value='/resources/css/default.css'/>" rel="stylesheet" />
-        <link href="<c:url value='/resources/css/deposit.css'/>" rel="stylesheet" />
+        <link href="<c:url value='/resources/css/transfer.css'/>" rel="stylesheet" />
         <script type="text/javascript"	src="<c:url value='/resources/js/common.js'/>"></script>
     </head>
     <body>
@@ -23,29 +22,14 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <jsp:include page="../incl/header.jsp"/>
         </nav>
-	<div class="wrapper">
-    <div class="form-container">
-      <form action="deposit" method="post">
-        <h3>입금</h3>
-        <p>양식에 맞추어 회원 정보를 입력해주세요.</p>
-        <div class="form-group">
-          <select id="depositAccountNumSelect" name="accountNum" class="form-control" required>
-          <option value="">선택하세요.</option>
-          <c:forEach var="text" items="${accountList}">
-	          <option>${text.accountNum}</option>
-          </c:forEach>
-        </select>
-        </div>
-        <div class="form-group">
-          <input type="text" name="depositMoney" onkeyup="inputNumberFormat(this)" class="form-control" required>
-          <span>금액</span>
-          <span class="won">원</span>
-          <span class="border"></span>
-        </div>
-        <button type="submit">입금</button>
-      </form>
-    </div>
-  </div>
+        <h3>송금이 완료되었습니다.</h3>
+		보내시는 분 : ${name}님<br>
+		금액 : <span class="money">${sendMoney}원</span><br>
+		받으시는 분 : ${receiveName}님<br>
+		계좌의 남은 금액 : <span class="money2">${afterTransferMoney}</span>원
+		<button type="button" onclick='location.href="<c:url value='/account/transfer'/>"'>다시 송금하기</button>
+		<button type="button" onclick='location.href="<c:url value='/main'/>"'>메인으로</button>
 </body>
 </html>
+
 

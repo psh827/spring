@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Heroic Features - Start Bootstrap Template</title>
+        <title>계좌신청</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -53,13 +53,13 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <jsp:include page="../incl/header.jsp"/>
         </nav>
- <div class="input-form-backgroud row">
+ <div class="input-form-backgroud row" style="padding: 0;">
       <div class="input-form col-md-12 mx-auto">
         <h4 class="mb-31">계좌신청</h4>
         <form class="validation-form" action="add_account" method="post">
           <div class="row">
              <div class="col-md-6 mb-3 text_center">
-              <label for="passwd">계좌타입을 선택해 주세요.</label>
+              <label for="passwd">계좌타입을 선택해 주세요.<br>(S / C 중 하나 입력(대문자))</label>
               <input type="text" name="accType" required="required"/>
               <div class="invalid-feedback">
                 계좌타입을 입력하세요

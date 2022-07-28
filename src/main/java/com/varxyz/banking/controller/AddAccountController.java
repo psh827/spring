@@ -43,7 +43,7 @@ public class AddAccountController {
 		char accType = accTypeString.charAt(0);
 		Account account = null;
 		
-		if(accType != 'S' || accType != 'C' || accTypeString.length() >= 2) {
+		if(accType != 'S' && accType != 'C' || accTypeString.length() >= 2) {
 			request.setAttribute("msg", "잘못된 입력입니다. S, C 만 입력가능합니다.");
 			request.setAttribute("url", "add_account");
 			return "alert";

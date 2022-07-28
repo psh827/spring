@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Heroic Features - Start Bootstrap Template</title>
+        <title>계좌조회상세</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -17,6 +17,7 @@
         <link href="<c:url value='/resources/css/style.css'/>" rel="stylesheet" />
         <link href="<c:url value='/resources/css/default.css'/>" rel="stylesheet" />
         <link href="<c:url value='/resources/css/view_balance_info.css'/>" rel="stylesheet" />
+        <script type="text/javascript"	src="<c:url value='/resources/js/common.js'/>"></script>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -25,7 +26,7 @@
         </nav>
         <div class="box">
         	<div class="box-content">
-				<h3 class="box-content-text">${name}님의 ${accountNum} 계좌의 잔고는<br> ${balance}원입니다.</h3>
+				<h3 class="box-content-text">${name}님의 ${accountNum} 계좌의 잔고는<br> <span class="money">${balance}</span>원입니다.</h3>
 				<button class="submit-btn" type="button" onclick='location.href="<c:url value='/main'/>"'>메인으로</button>	
         	</div>
         </div>

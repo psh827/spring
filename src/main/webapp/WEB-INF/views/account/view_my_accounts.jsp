@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Heroic Features - Start Bootstrap Template</title>
+        <title>계좌조회</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -16,6 +16,8 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="<c:url value='/resources/css/style.css'/>" rel="stylesheet" />
         <link href="<c:url value='/resources/css/view_my_accounts.css'/>" rel="stylesheet" />
+        <script type="text/javascript"	src="<c:url value='/resources/js/common.js'/>"></script>
+        
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -40,7 +42,7 @@
 	        <td>${i + 1}</td>
 	        <td>${accountList[i].accountNum}</td>
 	        <td>${accountList[i].accType}</td>
-	        <td>${accountList[i].balance}</td>
+	        <td><span class="money">${accountList[i].balance}</span>원</td>
 	        <td>${accountList[i].regDate}</td>
 	    </tr>
     </c:forEach>

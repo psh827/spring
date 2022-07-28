@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>환영합니다</title>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/default.css'/>" />
 </head>
 <body>

@@ -35,7 +35,7 @@ public class DepositController {
 	@PostMapping("/account/deposit")
 	public String deposit(HttpSession session, HttpServletRequest request) {
 		String accountNum = request.getParameter("accountNum");
-		String depositMoneyStr = request.getParameter("depositMoney");
+		String depositMoneyStr = request.getParameter("depositMoney").replace(",", "");
 		if(depositMoneyStr.matches(".*[a-zA-Z].*") || depositMoneyStr.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
 			request.setAttribute("msg", "금액 입력이 잘못되었습니다. 숫자만 가능합니다.");
 			request.setAttribute("url", "deposit");

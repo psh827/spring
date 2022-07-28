@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Heroic Features - Start Bootstrap Template</title>
+        <title>회원가입</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -16,6 +16,7 @@
         <link href="<c:url value='/resources/css/style.css'/>" rel="stylesheet" />
         <link href="<c:url value='/resources/css/default.css'/>" rel="stylesheet" />
         <link href="<c:url value='/resources/css/add_customer.css'/>" rel="stylesheet" />
+        <script type="text/javascript"	src="<c:url value='/resources/js/common.js'/>"></script>
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -26,7 +27,7 @@
                                                                                                
       <h2>회원가입</h2>
       <div class="textForm">
-        <input name="email" type="text" class="email" placeholder="아이디" />
+        <input name="email" type="text" class="email" placeholder="example1@java.com" />
       </div>
       <div class="textForm">
         <input name="passwd" type="password" class="pw" placeholder="비밀번호">
@@ -38,10 +39,10 @@
         <input name="name" type="text" class="name" placeholder="이름">
       </div>
       <div class="textForm">
-        <input name="ssn" type="text" class="cellphoneNo" placeholder="123456-1234567">
+        <input name="ssn" type="text" oninput="autoHyphenSsn2(this)" maxlength="14" class="cellphoneNo" placeholder="123456-1234567">
       </div>
       <div class="textForm">
-        <input name="phone" type="text" class="cellphoneNo" placeholder="010-1234-1234">
+        <input name="phone" type="text" oninput="autoHyphen2(this)" maxlength="13" class="cellphoneNo" placeholder="010-1234-1234">
       </div>
       <input type="submit" class="btn" value="J O I N"/>
     </form>
