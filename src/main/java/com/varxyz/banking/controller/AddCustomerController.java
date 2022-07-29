@@ -20,6 +20,12 @@ public class AddCustomerController {
 		return "/login_add/add_customer";
 	}
 	
+	/**
+	 * 회원 가입
+	 * @param customerCommand
+	 * @param model
+	 * @return
+	 */
 	@PostMapping("login_add/add_customer")
 	public String addCustomer(CustomerCommand customerCommand, Model model) {
 		model.addAttribute("customerCommand", customerCommand);	

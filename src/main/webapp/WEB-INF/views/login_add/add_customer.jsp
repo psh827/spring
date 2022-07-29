@@ -26,8 +26,10 @@
 	<form action="add_customer" method="post" class="joinForm">
                                                                                                
       <h2>회원가입</h2>
-      <div class="textForm">
-        <input name="email" type="text" class="email" placeholder="example1@java.com" />
+      <div class="textForm" style="display:flex; justify-content: space-between;">
+        <input name="email1" type="text" class="email" placeholder="example1" />
+        <span>@</span>
+        <input name="email2" type="text" class="email" placeholder="java.com" />
       </div>
       <div class="textForm">
         <input name="passwd" type="password" class="pw" placeholder="비밀번호">

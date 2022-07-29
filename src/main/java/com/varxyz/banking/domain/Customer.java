@@ -17,11 +17,24 @@ public class Customer {
 	private String ssn;
 	private String phone;
 	private Date regDate;
-	
+	private String accountNum;
 	public Customer() {
 	}
 	
 	public Customer(long cid) {
 		this.cid = cid;
 	}
+
+	public Customer(long cid, String email, String passwd, String name, String ssn, String phone, Date regDate) {
+		super();
+		this.cid = cid;
+		this.email = email;
+		this.passwd = passwd;
+		this.name = name;
+		this.ssn = ssn;
+		this.phone = phone;
+		this.regDate = regDate;
+	}
+	
+	
 }

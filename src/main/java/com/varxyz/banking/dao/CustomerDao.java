@@ -19,6 +19,10 @@ public class CustomerDao {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
+	/**
+	 * 회원가입
+	 * @param customer
+	 */
 	public void addCustomer(Customer customer) {
 		String sql = "INSERT INTO Customer (email, passwd, name, ssn, phone)"
 				+ " VALUES (?, ?, ?, ?, ?)";
@@ -26,6 +30,20 @@ public class CustomerDao {
 				customer.getName(), customer.getSsn(), customer.getPhone());
 	}
 	
+	/**
+	 * 전체 회원 조회
+	 * @return
+	 */
+	public List<Customer> getAllCustomer(){
+		String sql = "SELECT c.name, a.accountNum, c.regDate FROM Customer c INNER JOIN Account a ON c.cid = a.customerId";
+		return jdbcTemplate.query(sql, new CustomerRowMapper());
+	}
+	
+	/**
+	 * email(userId)로 유저 찾기
+	 * @param userId
+	 * @return
+	 */
 	public Customer getCustomerByUserId(String userId){
 		String sql = "SELECT * FROM Customer WHERE email=?";
 		return jdbcTemplate.queryForObject(sql, new RowMapper<Customer>() { //하나만 찾는 메소드 queryForObject
@@ -42,6 +60,12 @@ public class CustomerDao {
 		}, userId);
 	}
 	
+	/**
+	 * 아이디, 비밀번호 검사
+	 * @param userId
+	 * @param passwd
+	 * @return
+	 */
 	public boolean isUser(String userId, String passwd) {
 		String sql = "SELECT count(*) FROM Customer WHERE email=? AND passwd=?";
 		boolean result = true;

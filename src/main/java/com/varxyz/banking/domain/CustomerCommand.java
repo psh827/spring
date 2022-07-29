@@ -6,7 +6,9 @@ import lombok.Setter;
 @Getter
 @Setter
 public class CustomerCommand {
-	private String email;
+	private String email1;
+	private String email2;
+	private String email = email1 + "@" + email2;
 	private String passwd;
 	private String name;
 	private String ssn;

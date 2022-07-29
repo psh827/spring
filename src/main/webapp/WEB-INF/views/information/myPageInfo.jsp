@@ -84,7 +84,7 @@
 
    
     <footer class="my-3 text-center text-small">
-      <p class="mb-1">&copy; 2022 YM</p>
+      <p class="mb-1">&copy; 2022 PSH</p>
     </footer>
 	
 

@@ -9,6 +9,7 @@
          	<li class="nav-item"><a class="nav-link active" aria-current="page" href="<c:url value='/account/transfer'/>">송금</a></li>
         	 <li class="nav-item"><a class="nav-link" href="<c:url value='/account/deposit'/>">입금</a></li>
     	     <li class="nav-item"><a class="nav-link" href="<c:url value='/account/view_my_accounts'/>">내계좌 조회</a></li>
+	         <li class="nav-item"><a class="nav-link" href="<c:url value='/information/view_all_customers'/>">전체회원조회</a></li>
     	     <%if(session.getAttribute("userId")== null){ %>
 	         <li class="nav-item"><a class="nav-link" href="<c:url value='/login_add/login'/>">로그인</a></li>
 	         <%} else{ %>

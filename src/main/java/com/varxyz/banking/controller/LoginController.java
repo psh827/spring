@@ -39,6 +39,7 @@ public class LoginController {
 		String userId = request.getParameter("userId");
 		String passwd = request.getParameter("passwd");
 		
+		//id,passwd 검사
 		if(!customerService.isUser(userId, passwd)) {
 			request.setAttribute("msg", "아이디 혹은 비밀번호가 틀렸습니다.");
 			request.setAttribute("url", "login");
@@ -47,6 +48,7 @@ public class LoginController {
 		
 		Customer customer = customerService.getCustomerByUserId(userId);
 		
+		//로그인이 되어있는 동안 보일 데이터들을 넘겨준다. 로그아웃이 모두 해제 됨.
 		HttpSession session = request.getSession();
 		session.setAttribute("userId", userId);
 		session.setAttribute("name", customer.getName());

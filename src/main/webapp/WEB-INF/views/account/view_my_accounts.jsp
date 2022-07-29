@@ -42,7 +42,7 @@
 	        <td>${i + 1}</td>
 	        <td>${accountList[i].accountNum}</td>
 	        <td>${accountList[i].accType}</td>
-	        <td><span class="money">${accountList[i].balance}</span>원</td>
+	        <td><span class="money">${accountListBalance[i]}</span>원</td>
 	        <td>${accountList[i].regDate}</td>
 	    </tr>
     </c:forEach>

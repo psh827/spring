@@ -59,8 +59,12 @@
         <form class="validation-form" action="add_account" method="post">
           <div class="row">
              <div class="col-md-6 mb-3 text_center">
-              <label for="passwd">계좌타입을 선택해 주세요.<br>(S / C 중 하나 입력(대문자))</label>
-              <input type="text" name="accType" required="required"/>
+              <label for="accTypeSelect">계좌타입을 선택해 주세요.<br>(S / C 중 하나 입력(대문자))</label>
+              <select id="accTypeSelect" name="accType" required="required">
+				<option>선택하세용</option>
+				<option>S</option>
+				<option>C</option>              
+              </select>
               <div class="invalid-feedback">
                 계좌타입을 입력하세요
               </div>

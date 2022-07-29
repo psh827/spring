@@ -23,7 +23,7 @@ public class AccountServiceImpl implements AccountService{
 	}
 
 	@Override
-	public long getBalance(String accountNum) {
+	public double getBalance(String accountNum) {
 		return accountDao.getBalance(accountNum);
 	}
 
@@ -38,6 +38,7 @@ public class AccountServiceImpl implements AccountService{
 		accountDao.saveInterest(accountNum, interestRate);
 	}
 	
+	@Override
 	public void deposit(double depositMoney, String accountNum) {
 		accountDao.deposit(depositMoney, accountNum);
 	}

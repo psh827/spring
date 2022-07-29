@@ -26,7 +26,7 @@
         </nav>
         <div class="box">
         	<div class="box-content">
-				<h3 class="box-content-text">${name}님의 ${accountNum} 계좌의 잔고는<br> <span class="money">${balance}</span>원입니다.</h3>
+				<h3 class="box-content-text">${name}님의 ${accountNum} 계좌의 잔고는<br> <span class="money">${balance}</span>원 입니다.</h3>
 				<button class="submit-btn" type="button" onclick='location.href="<c:url value='/main'/>"'>메인으로</button>	
         	</div>
         </div>

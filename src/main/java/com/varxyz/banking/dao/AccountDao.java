@@ -7,6 +7,7 @@ import static java.sql.Types.DOUBLE;
 import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.varxyz.banking.domain.Account;
@@ -21,6 +22,10 @@ public class AccountDao {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
+	/**
+	 * 계좌 생성.
+	 * @param account
+	 */
 	public void addAccount(Account account) {
 		String sql = "INSERT INTO Account (customerId, accountNum, accType, balance, interestRate, overAmount)"
 				+ " VALUES(?, ?, ?, ?, ?, ?)";
@@ -47,6 +52,11 @@ public class AccountDao {
 		System.out.println("계좌신청 완료");
 	}
 	
+	/**
+	 * email(userId)로 계좌 얻기
+	 * @param email
+	 * @return
+	 */
 	public List<Account> getAccounts(String email){
 		String sql = "SELECT a.aid, a.customerId, a.accountNum, a.accType, a.balance,"
 				+ " a.interestRate, a.overAmount, a.regDate"
@@ -56,6 +66,12 @@ public class AccountDao {
 		return jdbcTemplate.query(sql, new CustomerAccountRowMapper(), email);
 	}
 	
+	/**
+	 * 이체
+	 * @param money
+	 * @param withdrawAccountNum
+	 * @param depositAccountNum
+	 */
 	public void transfer(double money, String withdrawAccountNum, String depositAccountNum) {
 		String sql = "UPDATE Account SET balance = balance - ? WHERE accountNum=?";
 		String sql2 = "UPDATE Account SET balance = balance + ? WHERE accountNum=?";
@@ -64,19 +80,38 @@ public class AccountDao {
 		System.out.println("송금완료");
 	}
 	
+	/**
+	 * 이자
+	 * @param accountNum
+	 * @param interestRate
+	 */
 	public void saveInterest(String accountNum, double interestRate) {
 		String sql = "UPDATE Account SET balance = balance + "
 				+ "(balance * (balance / ?)) WHERE accountNum=?";
 		jdbcTemplate.update(sql, interestRate, accountNum);
 	}
 	
-	public long getBalance(String accountNum) {
-		String sql = "SELECT a.balance FROM Account a INNER JOIN Customer c ON"
-				+ " a.customerId = c.cid WHERE a.accountNum=?";
-		
-		return jdbcTemplate.queryForObject(sql, Long.class, accountNum);
+	/**
+	 * 계좌번호별 잔액 조회
+	 * @param accountNum
+	 * @return
+	 */
+	public double getBalance(String accountNum) {
+		try {
+			String sql = "SELECT a.balance FROM Account a INNER JOIN Customer c ON"
+					+ " a.customerId = c.cid WHERE a.accountNum=?";
+			
+			return jdbcTemplate.queryForObject(sql, Long.class, accountNum);			
+		}catch(EmptyResultDataAccessException e) {
+			return 0;
+		}
 	}
 	
+	/**
+	 * 입금
+	 * @param depositMoney
+	 * @param accountNum
+	 */
 	public void deposit(double depositMoney, String accountNum) {
 		String sql = "UPDATE Account SET balance = balance + ? WHERE accountNum=?";
 		jdbcTemplate.update(sql, depositMoney, accountNum);
